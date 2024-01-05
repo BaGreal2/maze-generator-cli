@@ -60,7 +60,8 @@ bool Menu::run() {
 void Menu::handleGenerateMaze() {
   display.clearScreen();
   int size = -1;
-  while (size < 5) {
+  while (true) {
+    display.clearScreen();
     display.displayFrame("Insert the size of a maze ");
     display.displayFrame("(0 to return to menu)", "yellow");
     display.displayFrame(" -> ");
@@ -70,7 +71,9 @@ void Menu::handleGenerateMaze() {
     } else if (size < 5) {
       display.displayFrame("\nToo small size!\n", "red");
       display.sleep(700);
-      display.clearScreen();
+      continue;
+    } else {
+      break;
     }
   }
   if (size % 2 != 0) {
@@ -138,6 +141,7 @@ void Menu::handleSolveMaze() {
   vector<string> names = filesystem.getSavedFilesNames();
 
   while (true) {
+    names = filesystem.getSavedFilesNames();
     display.clearScreen();
     display.displayFrame("Choose a file to load:\n", "green");
     int i = 1;
@@ -149,12 +153,13 @@ void Menu::handleSolveMaze() {
     }
     if (i == 1)
       display.displayFrame("No files.\n\n", "red");
+
     display.displayFrame("0. Return to main menu\n", "yellow");
     display.displayFrame("\nProvide the number of a file -> ");
     fileIndex = display.readInput<int>();
     if (fileIndex == 0) {
       return;
-    } else if (fileIndex < 0 || fileIndex >= names.size()) {
+    } else if (fileIndex < 0 || fileIndex > names.size()) {
       display.displayFrame("\nInvalid option!\n", "red");
       display.sleep(1300);
       continue;

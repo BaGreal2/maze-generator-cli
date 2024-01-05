@@ -198,7 +198,7 @@ void MazeSolver::solveMazeAStar() {
 
   pair<int, int> cell = endCell;
   while (cell != startCell) {
-    path.emplace_back(cell);
+    path.push_back(cell);
     cell = aPath[cell.first][cell.second];
   }
 
