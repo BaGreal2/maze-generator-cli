@@ -147,6 +147,8 @@ void Menu::handleSolveMaze() {
       display.displayFrame(to_string(i) + ". " + name + "\n");
       ++i;
     }
+    if (i == 1)
+      display.displayFrame("No files.\n\n", "red");
     display.displayFrame("0. Return to main menu\n", "yellow");
     display.displayFrame("\nProvide the number of a file -> ");
     fileIndex = display.readInput<int>();
