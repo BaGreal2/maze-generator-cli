@@ -1,11 +1,13 @@
 #include "../include/menu.hpp"
-#include <iostream>
 
 int main() {
   DisplayManager display;
-  Menu menu(display);
+  FileManager filesystem(display);
+  Menu menu(display, filesystem);
+
   bool running = true;
   while (running)
     running = menu.run();
+
   return 0;
 }

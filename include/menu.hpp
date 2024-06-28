@@ -21,7 +21,7 @@ private:
   void handleChosen(int option);
 
 public:
-  Menu(DisplayManager _display);
+  Menu(DisplayManager _display, FileManager filesystem);
 
   bool run();
 };

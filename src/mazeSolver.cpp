@@ -1,7 +1,6 @@
 #include "../include/mazeSolver.hpp"
 #include "../include/constants.hpp"
 #include <cmath>
-#include <iostream>
 #include <map>
 #include <queue>
 #include <tuple>

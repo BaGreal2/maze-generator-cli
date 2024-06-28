@@ -7,8 +7,7 @@
 using std::ofstream, std::ifstream;
 namespace fs = std::filesystem;
 
-FileManager::FileManager() {
-}
+FileManager::FileManager(DisplayManager _display): display(_display) {}
 
 int FileManager::createSaveDirectory() {
   if (!fs::exists(directoryPath) || !fs::is_directory(directoryPath)) {

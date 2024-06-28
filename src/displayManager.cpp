@@ -1,7 +1,7 @@
 #include "../include/displayManager.hpp"
 #include "../include/constants.hpp"
 #include <chrono>
-#include <cstdlib>
+#include <fmt/core.h>
 #include <iostream>
 #include <thread>
 
@@ -10,43 +10,46 @@ DisplayManager::DisplayManager() {}
 void DisplayManager::clearScreen() { std::cout << "\033[2J\033[1;1H"; }
 
 void DisplayManager::displayFrame(string frame, string mode) {
+  string buffer;
   if (mode == "maze") {
     for (char ch : frame) {
       switch (ch) {
       case BORDER: {
-        std::cout << BORDER_COLOR(string(1, ch));
+        buffer += BORDER_COLOR(string(1, ch));
         break;
       }
       case VISITED: {
-        std::cout << VISITED_COLOR(string(1, ch));
+        buffer += VISITED_COLOR(string(1, ch));
         break;
       }
       case PATH: {
-        std::cout << PATH_COLOR(string(1, ch));
+        buffer += PATH_COLOR(string(1, ch));
         break;
       }
       case FINISH:
       case START: {
-        std::cout << START_FINISH_COLOR(string(1, ch));
+        buffer += START_FINISH_COLOR(string(1, ch));
         break;
       }
       default: {
-        std::cout << ch;
+        buffer += ch;
         break;
       }
       }
     }
+
   } else if (mode == "red") {
-    std::cout << red(frame);
+    buffer = red(frame);
   } else if (mode == "blue") {
-    std::cout << blue(frame);
+    buffer = blue(frame);
   } else if (mode == "green") {
-    std::cout << green(frame);
+    buffer = green(frame);
   } else if (mode == "yellow") {
-    std::cout << yellow(frame);
+    buffer = yellow(frame);
   } else {
-    std::cout << frame;
+    buffer = frame;
   }
+  fmt::print("{}", buffer);
 }
 
 void DisplayManager::sleep(int ms) {

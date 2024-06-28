@@ -1,7 +1,6 @@
 #include "../include/mazeGenerator.hpp"
 #include "../include/constants.hpp"
 #include <algorithm>
-#include <iostream>
 #include <random>
 #include <set>
 #include <utility>

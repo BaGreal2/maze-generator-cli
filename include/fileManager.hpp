@@ -14,7 +14,7 @@ private:
   DisplayManager display;
 
 public:
-  FileManager();
+  FileManager(DisplayManager _display);
   int createSaveDirectory();
   int save(string name, string data);
   string read(string name);

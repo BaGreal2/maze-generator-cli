@@ -7,11 +7,12 @@
 using std::chrono::high_resolution_clock, std::chrono::duration_cast,
     std::chrono::milliseconds, std::to_string;
 
-Menu::Menu(DisplayManager _display) { display = _display; };
+Menu::Menu(DisplayManager _display, FileManager _filesystem)
+    : filesystem(_filesystem), display(_display){};
 
 string Menu::getOptionsScreen() {
   string result;
-  for (int i = 0; i < 2; ++i) {
+  for (int i = 0; i < options.size(); ++i) {
     result += options[i];
     result += '\n';
   }
@@ -70,6 +71,10 @@ void Menu::handleGenerateMaze() {
       return;
     } else if (size < 5) {
       display.displayFrame("\nToo small size!\n", "red");
+      display.sleep(700);
+      continue;
+    } else if (size > 80) {
+      display.displayFrame("\nToo big size!\n", "red");
       display.sleep(700);
       continue;
     } else {
