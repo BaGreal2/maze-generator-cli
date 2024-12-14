@@ -40,6 +40,24 @@ void MazeGenerator::initializeMaze(int rows, int cols) {
   field.push_back(temp);
 }
 
+void MazeGenerator::initializeMaze(int size) {
+  for (int i = 0; i < size; ++i) {
+    vector<char> temp;
+    for (int j = 0; j < size; ++j) {
+      temp.push_back(BORDER);
+    }
+    if (size % 2 == 0)
+      temp.push_back(BORDER);
+    field.push_back(temp);
+  }
+  vector<char> temp;
+  if (size % 2 == 0)
+    for (int j = 0; j <= size; ++j) {
+      temp.push_back(BORDER);
+    }
+  field.push_back(temp);
+}
+
 void MazeGenerator::generateMazeDFS(int row, int col) {
   field[row][col] = EMPTY;
 

@@ -30,6 +30,7 @@ public:
   MazeGenerator();
   int getFrameCount();
   void initializeMaze(int rows, int cols);
+  void initializeMaze(int size);
   void generateMazeDFS(int row, int col);
   void generateMazeKruskal();
   void setStartFinish();

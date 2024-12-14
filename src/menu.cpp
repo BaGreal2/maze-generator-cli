@@ -85,7 +85,7 @@ void Menu::handleGenerateMaze() {
     ++size;
   }
   MazeGenerator mazeGen;
-  mazeGen.initializeMaze(size, size);
+  mazeGen.initializeMaze(size);
 
   while (true) {
     display.clearScreen();
